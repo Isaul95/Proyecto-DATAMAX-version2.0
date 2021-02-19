@@ -121,7 +121,7 @@ public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
         combopieza.setBounds(30, 190, 180, 30);
 
         combosucursal.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        combosucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blanca", "Zapata", "Mercado" }));
+        combosucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blanca", "Zapata", "Mercado", "Juarez" }));
         jPanel2.add(combosucursal);
         combosucursal.setBounds(30, 110, 180, 26);
 
