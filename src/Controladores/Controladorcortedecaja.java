@@ -54,7 +54,7 @@ public class Controladorcortedecaja {
           public static   ArrayList columna2 = new ArrayList();     
  public static final float pagopollo=20*90, tacos=60, almuerzo=28;//datos para la tabla utilidad
  public static float  totalchorizoyhuesito,totaldedescuentos, totaldepagos,diferenciaentablautilidad, utilidades, total_de_crudo, total_de_procesados, ventasdeldia, gastosdeldia, montodeapertura, diferencia, diferenciafinal, precio;
- public static short apertura, numerodescuentos;
+ public static long apertura, numerodescuentos;
  public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
 
    public static float ticketmonto, ticketventa, ticketgasto, ticketdiferencia;

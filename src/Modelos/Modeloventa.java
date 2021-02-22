@@ -557,7 +557,7 @@ if(NoP.equals(nombredepieza)){ //Si el nombre del producto es diferente del esta
              }//fin del id del usuario
                }
     }
-  public static void cantidadpolloenDByname(int pieza){
+  public static void cantidadpolloenDByname(long pieza){
     try{Connection ca= cc.conexion();
  sent  = (Statement)ca.createStatement();
    rs = sent.executeQuery("select * from productos  where id_producto='"+pieza+"'");
@@ -1023,7 +1023,7 @@ public static void cantidadenventasumadecantidadesfinales(String estadoventa, in
                     cc.getClose();
                 }
 }  
-public  static void eliminarhuesito(int id){
+public  static void eliminarhuesito(long id){
     id_max_de_venta();
         try{Connection ca= cc.conexion();
         String sql = "DELETE from descripcion_de_venta where id_producto= '"+id+"' and id_venta= '"+id_de_la_venta_incrementable+"' and fecha= '"+fecha()+"' and estado= '"+estadoenturno+"' ";

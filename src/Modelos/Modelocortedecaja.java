@@ -215,7 +215,7 @@ public static void metodogastosdeldia(){
                                          Statement sent  =(Statement)ca.createStatement();
                                          ResultSet  rs = sent.executeQuery("select * from apertura where fecha= '"+Controladorventa.fecha()+"'");
                                             while(rs.next()){
-                                                      apertura =rs.getShort("id_apertura");
+                                                      apertura =rs.getLong("id_apertura");
                                                       montodeapertura= rs.getFloat("monto");
                                                       }
                                                       }//fin del try-precio del producto
@@ -355,7 +355,7 @@ public static void metodogastosdeldia(){
       }finally{cc.getClose();}
  }//TICKET DEVOLUCION COCIDO,  LAS CANTIDADES Y PIEZAS
  
-  public static void obteniendolosvaloresdelcortedecajadeldiadehoyparaelticket(int numerodedescuentos, float totaldescuentos){
+  public static void obteniendolosvaloresdelcortedecajadeldiadehoyparaelticket(long numerodedescuentos, float totaldescuentos){
       try{Connection ca= cc.conexion();//SOLO SE LLAMA A LA CANTIDAD PORQUE EN EL TICKET YA SE DEFINIRÁN LOS NOMBRES DE CADA ARTICULO
                       sent  = (Statement)ca.createStatement();
                       rs = sent.executeQuery("select monto_entregado, gastos, ventas, diferencia from cortes where fecha=  '"+Controladorventa.fecha()+"' ");
@@ -376,7 +376,7 @@ public static void metodogastosdeldia(){
                       sent  = (Statement)ca.createStatement();
                       rs = sent.executeQuery("select id_venta, descuento from venta where fecha_reporte=  '"+Controladorventa.fecha()+"' and estado_venta='Realizada' and descuento>0");
                          while(rs.next()){
-                             venta.add(rs.getShort(1));
+                             venta.add(rs.getLong(1));
                              totalcdesc.add(rs.getFloat(2));
                          }                 
                      
@@ -404,7 +404,7 @@ public static void metodogastosdeldia(){
                 
     String sql = "INSERT INTO  cortes(id_apertura, monto_entregado, gastos, ventas, diferencia, fecha, hora, usuario)  VALUES (?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = ca.prepareCall(sql); //hasta aqui vamos
-                pst.setInt(1,apertura);
+                pst.setLong(1,apertura);
                  pst.setFloat(2,Float.parseFloat(Cortecaja.monto.getText()));
                   pst.setFloat(3,gastosdeldia);
                    pst.setFloat(4,ventasdeldia);

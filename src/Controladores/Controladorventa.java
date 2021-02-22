@@ -28,7 +28,7 @@ public static float variablepago, piezassuficientes, cantidadporerrordeusuario,
            cantidadpolloenDB, porcentaje, importe,cambio,precio, 
            NoPimporte=0,sumadeimportesenturno;
    
- public static short  id_producto, ciclofor,fila,id_usuario,totalcomprobacion, primerventa;//SI SE OCUPAN   
+ public static int  id_producto, ciclofor,fila,id_usuario,totalcomprobacion, primerventa;//SI SE OCUPAN   
  public static long id_de_la_venta_incrementable;
     public static String  fechadesde="",fechahasta="", fechaparaventasdesde="", fechaparaventashasta="";
 public static String nombredepiezaseleccionada="";
@@ -386,7 +386,7 @@ nucleo.deletedescuento.setVisible(true);
     }
     public static void tablaventa(){
         //ESTO DESCUENTA UN PRODUCTO A LA VEZ Y LO DEVUELVE A INVENTARIO
-        fila =Short.parseShort(String.valueOf(nucleo.tablaventa.getSelectedRow()));
+        fila =Integer.parseInt(String.valueOf(nucleo.tablaventa.getSelectedRow()));
  if(fila>=0){// CUANDO UNA CELDA SE SELECCIONO
             nombredepiezaseleccionada=nucleo.tablaventa.getValueAt(fila,0).toString();
             if(nombredepiezaseleccionada.equals("Huesito")||nombredepiezaseleccionada.equals("Longaniza")||nombredepiezaseleccionada.equals("Taxi")){

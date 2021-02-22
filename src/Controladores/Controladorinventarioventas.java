@@ -33,7 +33,7 @@ public class Controladorinventarioventas {
     public static float sumadetotalesdeventasdehoy,
             sumadeimportescreditopendiente,  sumadeimportesparaeltotal, 
             descuentoticket, cambioticket, pagoticket, totalticket, subtotalticket, descuentoenventa;
-    public static short conteototaldeventas, id_ventapencredito, id=0;
+    public static long conteototaldeventas, id_ventapencredito, id=0;
     public static String creditopagado="Credito-pagado", estadocancelado= "Cancelada", creditopendiente="Credito-pendiente";
     public static ArrayList importesticket = new ArrayList();
     public static ArrayList preciounitarioticket = new ArrayList();
@@ -73,8 +73,8 @@ public class Controladorinventarioventas {
         if(fila>=0){
             boolean pass =validarFormularioparamostrardescripciondeproductosporid(Inventarioventas.ventasacreditopendiente.getValueAt(fila,0).toString());
             if(pass){
-                Controladorinventarioventas.id_ventapencredito=Short.parseShort(Inventarioventas.ventasacreditopendiente.getValueAt(fila,0).toString());
-                Modeloinventarioventas.descripciondeproductosenbasealnumerodeventaporcreditopendiente(Integer.parseInt(Inventarioventas.ventasacreditopendiente.getValueAt(fila,0).toString()));
+                Controladorinventarioventas.id_ventapencredito=Long.parseLong(Inventarioventas.ventasacreditopendiente.getValueAt(fila,0).toString());
+                Modeloinventarioventas.descripciondeproductosenbasealnumerodeventaporcreditopendiente(Long.parseLong(Inventarioventas.ventasacreditopendiente.getValueAt(fila,0).toString()));
                 Modeloinventarioventas.total_venta_creditopendiente(Controladorinventarioventas.id_ventapencredito);
                 Inventarioventas.totalventacreditoenturno.setText(String.valueOf(sumadeimportescreditopendiente));
                 Inventarioventas.labelnombre.setVisible(true);
@@ -93,8 +93,9 @@ public class Controladorinventarioventas {
  if(fila>=0){
             boolean pass= validarFormularioparamostrardescripciondeproductosporid(Inventarioventas.jTable2.getValueAt(fila,0).toString());
             if(pass){
+            
                Inventarioventas.veridventas.setVisible(true);
-                id=Short.parseShort(Inventarioventas.jTable2.getValueAt(fila,0).toString());
+                id=Long.parseLong(Inventarioventas.jTable2.getValueAt(fila,0).toString());
                 Modeloinventarioventas.descripciondeproductosenbasealnumerodeventa(id);
                 Modeloinventarioventas.total_ventaporid(id);
                 Inventarioventas.labelparaeltotal.setVisible(true);
@@ -107,7 +108,7 @@ public class Controladorinventarioventas {
         else
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila primero","Aviso",JOptionPane.INFORMATION_MESSAGE);
         }
-     public static void botoncancelarventa(short id){
+     public static void botoncancelarventa(long id){
             Modeloinventarioventas.status_cancelado(id); //Cancela venta: se refiera a poner el estado "Cancelada" tando a la tabla venta y descripcion_de_venta que correspondan a èste ID
         Inventarioventas.fechainicial.cleanup();// Limpia el calendario final 
         Inventarioventas.fechainicial.setDate(null); // igual que el de arriba 
@@ -120,9 +121,9 @@ public class Controladorinventarioventas {
         Inventarioventas.labelparaeltotal.setVisible(false);
         Inventarioventas.imprimirventa.setVisible(false); //Cculta el boton de imprimir la venta
   Inventarioventas.cancelarventa.setVisible(false);//Oculta el botòn de cancelar la venta
-  Modeloventa.regresarproductos_a_inventariodescontandotodaslaspiezas("Cancelada",(int)id);
-  Modeloinventarioventas.la_venta_tiene_descuento_si_o_no((int)id);
-         Modeloinventarioventas.eliminar_idventa_sitienedescuento(descuentoenventa,(int)id);
+  Modeloventa.regresarproductos_a_inventariodescontandotodaslaspiezas("Cancelada",(long)id);
+  Modeloinventarioventas.la_venta_tiene_descuento_si_o_no((long)id);
+         Modeloinventarioventas.eliminar_idventa_sitienedescuento(descuentoenventa,(long)id);
   Controladorventa.storage.clear();
   Modeloinventarioventas.impresiondeventacancelada(id);
         }
@@ -135,7 +136,7 @@ public class Controladorinventarioventas {
          Inventarioventas.veridventasacreditopendiente.setVisible(false);
          Inventarioventas.pagarventaacredito.setVisible(false);
         }
-        public static void boton_pagar_venta_credito(int id){
+        public static void boton_pagar_venta_credito(long id){
             Modeloinventarioventas.pagarventacredito(id);
         }
         public static void botonbuscarventas_porfecha(){

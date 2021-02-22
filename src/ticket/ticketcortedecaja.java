@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
  public class ticketcortedecaja{
-  public void ticketcortedecaja(float monto, float gasto, float venta , float diferencia, float ventasmenosgastos, float totaldepagos, int numerodedescuentos, float totaldescuentos) {
+  public void ticketcortedecaja(float monto, float gasto, float venta , float diferencia, float ventasmenosgastos, float totaldepagos, long numerodedescuentos, float totaldescuentos) {
      Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");                

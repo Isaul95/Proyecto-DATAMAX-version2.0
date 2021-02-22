@@ -32,7 +32,7 @@ public class Modeloinventarioventas extends Controladorinventarioventas{
     static SI cc= new SI();
    static Statement sent;  
 static ResultSet rs;  
-public static void la_venta_tiene_descuento_si_o_no(int id_venta){
+public static void la_venta_tiene_descuento_si_o_no(long id_venta){
         try{ Connection ca= cc.conexion();// La suma de todos los importes
                                          Statement sent  =(Statement)ca.createStatement();
                                          ResultSet  rs = sent.executeQuery("select descuento from venta where fecha_reporte= '"+Controladorventa.fecha()+"' AND id_venta='"+id_venta+"'");
@@ -47,7 +47,7 @@ public static void la_venta_tiene_descuento_si_o_no(int id_venta){
                   cc.getClose();
              }
     }
-public static void eliminar_idventa_sitienedescuento(float descuento, int id_venta){
+public static void eliminar_idventa_sitienedescuento(float descuento, long id_venta){
     if(descuento!=0){
         try{ Connection ca= cc.conexion();// La suma de todos los importes
                                         String sql = "delete from egreso where id_venta= '"+id_venta+"'";
@@ -82,7 +82,7 @@ public static void eliminar_idventa_sitienedescuento(float descuento, int id_ven
                                          Statement sent  =(Statement)ca.createStatement();
                                          ResultSet  rs = sent.executeQuery("SELECT COUNT(id_venta) FROM venta WHERE fecha_reporte = '"+Controladorventa.fecha()+"' AND estado_venta='Realizada'");
                                             if(rs.next()){
-                                                      conteototaldeventas =Short.parseShort(String.valueOf(rs.getInt("COUNT(id_venta)")));
+                                                      conteototaldeventas =Long.parseLong(String.valueOf(rs.getInt("COUNT(id_venta)")));
                                                       }
                                                       }//fin del try-precio del producto
                                                       catch (Exception e){
@@ -105,7 +105,7 @@ public static void eliminar_idventa_sitienedescuento(float descuento, int id_ven
         PreparedStatement ps = ca.prepareStatement(sSQL);       
         ResultSet rs = ps.executeQuery(sSQL);
             while (rs.next()) {
-                columna[0] = rs.getInt(1);
+                columna[0] = rs.getLong(1);
                 columna[1] = "$"+String.valueOf(rs.getFloat(2));
                  columna[2] = rs.getString(3);
                 modeloTE.addRow(columna);
@@ -192,7 +192,7 @@ String sSQL = " select distinct venta.id_venta, venta.total, venta.fecha_reporte
         JOptionPane.showMessageDialog(null, e, "Advertencia", JOptionPane.PLAIN_MESSAGE);    
     }finally{cc.getClose();}
     }
-     public static void pagarventacredito(int id_ventapencredito){
+     public static void pagarventacredito(long id_ventapencredito){
     DecimalFormat solodosdecimales = new DecimalFormat("#.##");
     try{
             String pagodeventacredito="";
@@ -240,7 +240,7 @@ int decision=JOptionPane.showConfirmDialog(null,"¿Desea continuar?","Estás por
         }catch(NullPointerException NP){//ESTO EVITA QUE EL USUARIO META UN VALOR VACIO
  }
 }
-     public static void total_venta_creditopendiente(int id){
+     public static void total_venta_creditopendiente(long id){
         try{ Connection ca= cc.conexion();// La suma de todos los importes
                                           sent  =(Statement)ca.createStatement();
                                            rs = sent.executeQuery("select total from venta where id_venta= '"+id+"'");
@@ -254,7 +254,7 @@ int decision=JOptionPane.showConfirmDialog(null,"¿Desea continuar?","Estás por
                     cc.getClose();
                 }// fin del precio-catch del producto
     }
-     public static void impresiondeventacancelada(int numerodeventa){
+     public static void impresiondeventacancelada(long numerodeventa){
     try {Connection ca= cc.conexion();
                  String sSQL = "SELECT nombre_producto, cantidad, precio_unitario, importe FROM descripcion_de_venta WHERE estado='Cancelada' AND id_venta = '"+numerodeventa+"' ";  
         PreparedStatement ps = ca.prepareStatement(sSQL);       
@@ -281,7 +281,7 @@ int decision=JOptionPane.showConfirmDialog(null,"¿Desea continuar?","Estás por
              }
     }
      
-public static void total_pagoycambiopararelticketdeventacancelada(int id){ // recibe como parametro 
+public static void total_pagoycambiopararelticketdeventacancelada(long id){ // recibe como parametro 
          Object[] columna = new Object[5];  //crear un obj con el nombre de colunna
         try {Connection ca= cc.conexion();
          String sSQL = "SELECT subtotal, total, pago, cambio, descuento FROM venta WHERE estado_venta='"+estadocancelado+"' AND fecha_reporte = '"+Controladorventa.fecha()+"' and id_venta='"+id+"' ";
@@ -321,7 +321,7 @@ try {Connection ca= cc.conexion();
              } 
     }
   
-   public static void status_cancelado(int id){
+   public static void status_cancelado(long id){
         try{Connection ca= cc.conexion();
                     PreparedStatement ps = ca.prepareStatement ("UPDATE venta SET estado_venta='"+estadocancelado+"'WHERE id_venta='"+id+"'");
                 ps.executeUpdate();
@@ -342,7 +342,7 @@ try {Connection ca= cc.conexion();
                     cc.getClose();
                 }    
    }
-   public static void total_ventaporid(int id){
+   public static void total_ventaporid(Long id){
         try{ Connection ca= cc.conexion();// La suma de todos los importes
                                           sent  =(Statement)ca.createStatement();
                                            rs = sent.executeQuery("select total from venta where id_venta= '"+id+"'");
@@ -356,7 +356,7 @@ try {Connection ca= cc.conexion();
                     cc.getClose();
                 }// fin del precio-catch del producto
     }
-   public static void descripciondeproductosenbasealnumerodeventaporcreditopendiente(int numerodeventa){
+   public static void descripciondeproductosenbasealnumerodeventaporcreditopendiente(long numerodeventa){
         Object[] columna = new Object[4];  //crear un obj con el nombre de colunna
             Connection ca= cc.conexion(); // CONEXION DB 
               DefaultTableModel modeloT = new DefaultTableModel(); 
@@ -384,7 +384,7 @@ try {Connection ca= cc.conexion();
         JOptionPane.showMessageDialog(null, e, "Advertencia", JOptionPane.PLAIN_MESSAGE);    
     }finally{cc.getClose();}
     }
-   public static void descripciondeproductosenbasealnumerodeventa(int numerodeventa){
+   public static void descripciondeproductosenbasealnumerodeventa(long numerodeventa){
         Object[] columna = new Object[4];  //crear un obj con el nombre de colunna
             Connection ca= cc.conexion(); // CONEXION DB 
               DefaultTableModel modeloT = new DefaultTableModel(); 
@@ -410,7 +410,7 @@ try {Connection ca= cc.conexion();
         JOptionPane.showMessageDialog(null, e, "Advertencia", JOptionPane.PLAIN_MESSAGE);    
     }
     }
-   public static void reimpresiondeventa(int numerodeventa){
+   public static void reimpresiondeventa(long numerodeventa){
          try {Connection ca= cc.conexion();
                  String sSQL = "SELECT nombre_producto, cantidad, precio_unitario, importe FROM descripcion_de_venta WHERE estado='Realizada' AND id_venta = '"+numerodeventa+"' ";  
         PreparedStatement ps = ca.prepareStatement(sSQL);       
