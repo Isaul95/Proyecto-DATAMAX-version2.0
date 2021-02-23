@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import si.Apertura;
-import si.nucleo;
 
 /**
  *

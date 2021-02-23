@@ -11,8 +11,6 @@ import javax.swing.JOptionPane;
 import si.nucleo;
 import ticket.ticketventa;
 
-import ticket.ticketventacondescuento;
-import ticket.ticketventacredito;
 
 /**
  *

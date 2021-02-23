@@ -1,10 +1,6 @@
 package si;
 import Controladores.Controladorcalculadora;
-import Controladores.Controladorventa;
 import java.awt.event.KeyEvent;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 public class Calculadora extends javax.swing.JFrame {
  
 public Calculadora(String pieza, String descripcion){

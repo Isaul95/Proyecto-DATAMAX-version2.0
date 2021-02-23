@@ -2,17 +2,9 @@
 package si;
 import Controladores.Controladorapertura;
 import Controladores.Controladorventa;
-import java.awt.Color;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 
 public class Apertura extends javax.swing.JFrame implements Runnable{
  Thread hilo; 

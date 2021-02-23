@@ -148,7 +148,7 @@ public static   SI cc = new SI();
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel5.setText("Agregar / Modificare Productos");
+        jLabel5.setText("Agregar / Modificar Productos");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);

@@ -7,8 +7,6 @@ package si;
 import Controladores.Controladorventa;
 import Controladores.Controladorinventarioventas;
 import Modelos.Modeloinventarioventas;
-import Modelos.Modeloventa;
-import javax.swing.JOptionPane;
 
 /** 
  *

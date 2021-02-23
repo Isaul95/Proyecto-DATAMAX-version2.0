@@ -1,7 +1,6 @@
 package si;
 import Controladores.Controladorgastos;
 import Controladores.Controladorventa;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 

@@ -190,7 +190,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="22" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Agregar / Modificare Productos"/>
+                <Property name="text" type="java.lang.String" value="Agregar / Modificar Productos"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
             </Component>

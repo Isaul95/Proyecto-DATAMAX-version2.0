@@ -1,25 +1,10 @@
 package si;
-import Controladores.Controladorcalculadora;
 import Controladores.Controladorproductoexterno;
 import Controladores.Controladorventa;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import ticket.TicketVentaExterna;
 
 public class ProductosExternos extends javax.swing.JFrame  implements Runnable{
   Thread hilo;
@@ -70,6 +55,7 @@ public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
         J_tableLlenados = new javax.swing.JTable();
         cantidad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        cleantable = new javax.swing.JButton();
         user = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -157,7 +143,7 @@ public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(310, 410, 210, 60);
+        jButton1.setBounds(300, 410, 210, 60);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,6 +193,17 @@ public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
         jPanel2.add(jLabel11);
         jLabel11.setBounds(30, 160, 190, 29);
 
+        cleantable.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cleantable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/si/IconosJava/casilla-de-verificacion (1).png"))); // NOI18N
+        cleantable.setText("Limpiar venta");
+        cleantable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleantableActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cleantable);
+        cleantable.setBounds(30, 340, 190, 60);
+
         jPanel1.add(jPanel2);
         jPanel2.setBounds(20, 50, 650, 480);
 
@@ -252,6 +249,10 @@ public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
       Controladorproductoexterno.alagregarenexterno();
         }
     }//GEN-LAST:event_cantidadKeyReleased
+
+    private void cleantableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleantableActionPerformed
+      Controladorproductoexterno.limpiarventa();
+    }//GEN-LAST:event_cleantableActionPerformed
  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -295,6 +296,7 @@ public static int  id_usuario=Integer.parseInt(SI_Inicio.iduser.getText());
     public static javax.swing.JTable J_tableLlenados;
     private javax.swing.JLabel Reloj;
     public static javax.swing.JTextField cantidad;
+    private javax.swing.JButton cleantable;
     public static javax.swing.JComboBox<String> combopieza;
     public static javax.swing.JComboBox<String> combosucursal;
     private javax.swing.JButton jButton1;

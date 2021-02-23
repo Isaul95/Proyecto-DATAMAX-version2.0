@@ -1,14 +1,11 @@
 package si;
 import Controladores.Controladorventa;
-import Modelos.Modeloventa;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import javax.swing.JOptionPane;
-import static si.Entradaproductos.JtablepaLaVenta;
 import static si.nucleo.Cortedecaja;
 public final class nucleo extends javax.swing.JFrame implements Runnable{
         Thread hilo;
